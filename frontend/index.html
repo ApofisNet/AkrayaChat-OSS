@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akraya Chat</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Deployment-specific privacy, availability, and data practices depend on the operator. -->
+    <meta name="description" content="Akraya Chat is a self-hostable AI chat interface. Features, privacy, availability, and data handling depend on each operator's deployment.">
+    <meta name="author" content="Akraya Chat contributors">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Akraya Chat">
+    <meta property="og:description" content="A self-hostable AI chat interface. Deployment features and privacy depend on the operator.">
+    <meta property="og:site_name" content="Akraya">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Akraya Chat">
+    <meta name="twitter:description" content="A self-hostable AI chat interface. Deployment features and privacy depend on the operator.">
+
+    <!-- App / PWA -->
+    <meta name="theme-color" content="#E8DCC8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Akraya">
+    <meta name="application-name" content="Akraya">
+    <meta name="msapplication-TileColor" content="#E8DCC8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect fill='%23E8DCC8' width='180' height='180'/%3E%3Cg transform='translate(45 45)'%3E%3Cpath d='M50 48 C44 38 22 18 10 24 C2 28 8 52 24 56 C34 59 44 54 50 48Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M50 48 C56 38 78 18 90 24 C98 28 92 52 76 56 C66 59 56 54 50 48Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M50 54 C44 58 28 60 20 68 C14 74 22 84 34 78 C42 74 48 64 50 54Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M50 54 C56 58 72 60 80 68 C86 74 78 84 66 78 C58 74 52 64 50 54Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cellipse cx='50' cy='52' rx='3.5' ry='18' fill='%232d3748'/%3E%3Cline x1='50' y1='34' x2='38' y2='18' stroke='%232d3748' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='37' cy='17' r='2.5' fill='%232d3748'/%3E%3Cline x1='50' y1='34' x2='62' y2='18' stroke='%232d3748' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='63' cy='17' r='2.5' fill='%232d3748'/%3E%3C/g%3E%3C/svg%3E">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Akraya",
+        "alternateName": ["Akraya Chat", "Akraya AI Companion"],
+        "description": "Akraya Chat is a self-hostable AI chat interface. Features, privacy, availability, and data handling depend on each operator's deployment.",
+        "applicationCategory": "HealthApplication",
+        "applicationSubCategory": "Mental Health",
+        "operatingSystem": "Web, iOS (PWA), Android (PWA)",
+        "browserRequirements": "Requires JavaScript. Works in all modern browsers.",
+        "featureList": [
+            "Self-hostable static frontend and Cloudflare Worker",
+            "Features, availability, and data practices depend on the operator's deployment",
+            "Works as a Progressive Web App on iOS and Android — no app store required",
+            "Built-in safety layer reads every message before the AI responds"
+        ],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "Akraya",
+            "email": "zsz@apofisgroup.com",
+            "foundingDate": "2024-01-02",
+            "description": "Open-source self-hostable chat software."
+        },
+        "datePublished": "2024-01-02",
+        "dateModified": "2026-08-21",
+        "inLanguage": "en"
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage (surfaces in AI answers and Google rich snippets) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Akraya?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Akraya Chat is self-hostable software. Privacy and data handling depend on the operator's deployment."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Akraya free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The software is open source. Operating costs and access rules depend on the operator's deployment."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Akraya truly anonymous?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Privacy and anonymity depend on the operator's infrastructure, configuration, and policies. Review the service information provided by the operator."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does Akraya's crisis detection work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The software includes automated safety features, but they can miss situations or provide inaccurate information. They are not a substitute for emergency services or professional care."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does Akraya claim to be a therapist or doctor?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AI-generated responses may be inaccurate and are not a substitute for professional advice, diagnosis, or treatment."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What makes Akraya safer than other AI mental health apps?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Review the source code and the operator's service information to understand the features and protections in a specific deployment."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Akraya Chat?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Akraya Chat is a self-hostable AI chat interface. Features, privacy, and availability depend on the operator's deployment and configuration."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does Akraya have a mobile app?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The frontend can be installed as a Progressive Web App where supported by the browser and deployment."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Who built Akraya?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "See this repository's README and license for project information."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Akraya",
+        "description": "Open-source self-hostable AI chat software.",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "zsz@apofisgroup.com",
+            "availableLanguage": "English"
+        }
+    }
+    </script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:          #E8DCC8;
+            --surface:     #F5F0E8;
+            --surface-2:   #EDE4D8;
+            --border:      #D9CCC0;
+            --text:        #333333;
+            --text-muted:  #555555;
+            --text-faint:  #5c5c5c;
+            --accent:      #6366f1;
+            --accent-text: #7b7ef1;
+            --accent-dim:  #3730a3;
+            --user-bg:     #D4E5F7;
+            --user-border: #A8C9E8;
+            --user-text:   #1a3a5a;
+            --think-bg:    #F0E8E0;
+            --think-border:#D9CCC0;
+            --think-text:  #555555;
+            --radius:      14px;
+            --radius-sm:   8px;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Lora', Georgia, 'Times New Roman', serif;
+            font-size: 15px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow: hidden;
+            position: fixed;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        /* ── Layout ── */
+        /* ── Butterfly canvas ── */
+        #app {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .chatbox-collage {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .chatbox-collage .collage-art {
+            position: absolute;
+            height: auto;
+            fill: none;
+        }
+
+
+        /* ── Header ── */
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px 12px;
+            padding-top: calc(16px + env(safe-area-inset-top));
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-logo-icon {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+
+        .header-logo-icon .hlw {
+            transform-box: fill-box;
+            transform-origin: right center;
+            animation: hlwFlap 1.1s ease-in-out infinite;
+        }
+        .header-logo-icon .hrw {
+            transform-box: fill-box;
+            transform-origin: left center;
+            animation: hrwFlap 1.1s ease-in-out infinite;
+        }
+        @keyframes hlwFlap {
+            0%, 100% { transform: scaleX(1) rotate(0deg); }
+            50%      { transform: scaleX(0.7) rotate(-8deg); }
+        }
+        @keyframes hrwFlap {
+            0%, 100% { transform: scaleX(1) rotate(0deg); }
+            50%      { transform: scaleX(0.7) rotate(8deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .header-logo-icon .hlw, .header-logo-icon .hrw { animation: none; }
+        }
+
+        .header-name {
+            font-size: 17px;
+            font-weight: 400;
+            font-family: 'IM Fell English', Georgia, serif;
+            color: var(--text);
+            letter-spacing: 0.01em;
+        }
+
+        .header-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        #reset-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.15s;
+        }
+
+        #music-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+            flex-shrink: 0;
+        }
+        #music-toggle svg { width: 15px; height: 15px; }
+        #music-toggle:hover { border-color: var(--accent); color: var(--text); }
+        #music-toggle.is-playing { color: var(--accent); border-color: var(--accent-dim); }
+        #music-toggle.is-playing.is-muted { color: var(--text-muted); border-color: var(--border); }
+        #reset-btn:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        /* ── Chat area ── */
+        #response {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px 20px 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            scroll-behavior: smooth;
+        }
+
+        #response::-webkit-scrollbar { width: 4px; }
+        #response::-webkit-scrollbar-track { background: transparent; }
+        #response::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+        /* ── Messages ── */
+        .ai-message, .user-message {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            line-height: 1.65;
+            font-size: 14.5px;
+            position: relative;
+            animation: msgIn 0.18s ease;
+        }
+
+        @keyframes msgIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .ai-message {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: 'IM Fell English', Georgia, serif;
+            font-size: 16px;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .user-message {
+            background: var(--user-bg);
+            border: 1px solid var(--user-border);
+            color: var(--user-text);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .response-meta {
+            margin-top: 6px;
+            font-size: 10px;
+            color: var(--text-faint);
+            display: flex;
+            gap: 8px;
+        }
+
+        .response-meta a {
+            color: var(--text-faint);
+            text-decoration: none;
+        }
+        .response-meta a:hover { color: var(--text-muted); }
+
+        /* ── R1 Thinking block ── */
+        .r1-reasoning {
+            margin-bottom: 10px;
+            padding: 10px 14px;
+            background: var(--think-bg);
+            border-left: 2px solid var(--think-border);
+            border-radius: 6px;
+            font-size: 12px;
+            font-style: italic;
+            color: var(--think-text);
+            line-height: 1.55;
+            white-space: pre-wrap;
+            word-break: break-word;
+            transition: opacity 0.5s ease;
+        }
+
+        .r1-reasoning.r1-done {
+            opacity: 0.35;
+        }
+
+        .r1-label {
+            display: inline-block;
+            font-size: 9px;
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-text);
+            margin-right: 7px;
+            vertical-align: 1px;
+        }
+
+        .r1-response-text {
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        /* ── Typing indicator ── */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 14px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            border-bottom-left-radius: 4px;
+            align-self: flex-start;
+            animation: msgIn 0.18s ease;
+        }
+
+        .typing-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.4;
+            animation: typePulse 1.3s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) { animation-delay: 0ms; }
+        .typing-dot:nth-child(2) { animation-delay: 160ms; }
+        .typing-dot:nth-child(3) { animation-delay: 320ms; }
+
+        @keyframes typePulse {
+            0%, 60%, 100% { opacity: 0.3; transform: scale(0.85); }
+            30%            { opacity: 1;   transform: scale(1.1); }
+        }
+
+        /* ── Input area ── */
+        #input-area {
+            padding: 12px 20px 20px;
+            border-top: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        #input-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 8px 8px 8px 16px;
+            transition: border-color 0.15s;
+        }
+
+        #input-row:focus-within {
+            border-color: var(--accent-dim);
+        }
+
+        #input {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 16px;
+            line-height: 1.5;
+            resize: none;
+            min-height: 24px;
+            max-height: 120px;
+            padding: 4px 0;
+        }
+
+        #input::placeholder { color: var(--text-faint); }
+
+        #send-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.15s, transform 0.1s;
+        }
+
+        #send-btn:hover { background: #4f52d8; }
+        #send-btn:active { transform: scale(0.92); }
+        #send-btn:disabled { background: var(--surface-2); cursor: not-allowed; }
+
+        #send-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+        .input-hint {
+            font-size: 10px;
+            color: var(--text-faint);
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .input-hint a { color: var(--text-faint); text-decoration: none; }
+        .input-hint a:hover { color: var(--text-muted); }
+
+
+        /* ── Welcome modal ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 900;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.open { display: flex; }
+
+        .modal-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            max-width: 480px;
+            width: 100%;
+            padding: 32px 28px 24px;
+            animation: modalIn 0.22s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.96) translateY(8px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-box h2 {
+            font-size: 24px;
+            font-weight: 400;
+            font-family: 'IM Fell English', Georgia, serif;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .modal-box p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+
+        .modal-details {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--surface-2);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .modal-details summary {
+            padding: 11px 14px;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            user-select: none;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .modal-details summary::-webkit-details-marker { display: none; }
+
+        .modal-details summary::before {
+            content: '›';
+            font-size: 16px;
+            transition: transform 0.15s;
+        }
+
+        .modal-details[open] summary::before { transform: rotate(90deg); }
+
+        .modal-details-body {
+            padding: 12px 14px 14px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .modal-details-body strong { color: var(--text); }
+        .modal-details-body a { color: #818cf8; text-decoration: none; }
+        .modal-details-body a:hover { text-decoration: underline; }
+
+        .modal-enter-btn {
+            width: 100%;
+            padding: 12px;
+            background: #4338ca;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s;
+            margin-bottom: 10px;
+        }
+
+        .modal-enter-btn:hover { background: #3730a3; }
+
+        .modal-story-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .modal-story-btn:hover {
+            background: var(--surface);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ── Emergency modal ── */
+        .emergency-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.82);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+            backdrop-filter: blur(3px);
+            animation: emergFadeIn 0.2s ease;
+        }
+
+        @keyframes emergFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .emergency-modal {
+            background: #100a0a;
+            border: 1px solid #7f1d1d;
+            border-radius: 18px;
+            max-width: 400px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.9);
+            animation: emergSlideUp 0.22s ease;
+        }
+
+        @keyframes emergSlideUp {
+            from { transform: translateY(12px); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+
+        .emergency-header {
+            padding: 18px 20px;
+            background: #1a0505;
+            border-bottom: 1px solid #7f1d1d33;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .emergency-icon { font-size: 22px; flex-shrink: 0; }
+
+        .emergency-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fca5a5;
+            line-height: 1.4;
+        }
+
+        .emergency-body { padding: 18px 20px; }
+
+        .emergency-note {
+            font-size: 13.5px;
+            color: #d4d4d8;
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+
+        .emergency-privacy {
+            font-size: 11px;
+            color: #52525b;
+            background: #0d0d0d;
+            border: 1px solid #1f2937;
+            border-radius: 6px;
+            padding: 8px 11px;
+            margin-bottom: 16px;
+            line-height: 1.55;
+        }
+
+        .emergency-numbers {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .emergency-num {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 14px;
+            background: #111;
+            border-radius: 10px;
+            border: 1px solid #1f2937;
+        }
+
+        .emergency-num.crisis-line {
+            border-color: #7f1d1d44;
+            background: #130505;
+        }
+
+        .enum-label { font-size: 11px; color: #71717a; }
+        .enum-value { font-size: 19px; font-weight: 700; color: #f87171; letter-spacing: 0.04em; }
+        .emergency-num.crisis-line .enum-value { font-size: 15px; color: #fca5a5; }
+
+        .emergency-reassure {
+            font-size: 11px;
+            color: #52525b;
+            font-style: italic;
+            line-height: 1.55;
+            margin-bottom: 18px;
+        }
+
+        .emergency-close-btn {
+            width: 100%;
+            padding: 11px;
+            background: #1f2937;
+            border: none;
+            border-radius: 10px;
+            color: #d1d5db;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .emergency-close-btn:hover:not(:disabled) { background: #374151; }
+
+        .emergency-close-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background: #111;
+        }
+
+        /* ── Drifting butterfly ── */
+        #bf {
+            position: fixed;
+            width: 28px;
+            height: 28px;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0;
+            will-change: transform, opacity;
+            transition: opacity 1.2s ease;
+        }
+        .bfw-l {
+            transform-box: fill-box;
+            transform-origin: right center;
+            animation: bfWL 0.3s ease-in-out infinite alternate;
+        }
+        .bfw-r {
+            transform-box: fill-box;
+            transform-origin: left center;
+            animation: bfWR 0.3s ease-in-out infinite alternate;
+        }
+        @keyframes bfWL {
+            0%   { transform: scaleX(1) rotate(-3deg); }
+            100% { transform: scaleX(0.18) rotate(-14deg); }
+        }
+        @keyframes bfWR {
+            0%   { transform: scaleX(1) rotate(3deg); }
+            100% { transform: scaleX(0.18) rotate(14deg); }
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 600px) {
+            .ai-message, .user-message { max-width: 90%; }
+            #response { padding: 16px 14px 8px; }
+            #input-area { padding: 10px 14px 16px; }
+            #header { padding: 12px 16px 10px; padding-top: calc(12px + env(safe-area-inset-top)); }
+        }
+    </style>
+
+</head>
+<body>
+
+<!-- iOS Install Instructions Modal -->
+<div id="iosModal" class="modal-overlay">
+    <div class="modal-box">
+        <svg style="width:48px;height:48px;margin-bottom:12px;display:block" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M50 48 C44 38 22 18 10 24 C2 28 8 52 24 56 C34 59 44 54 50 48Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M50 48 C56 38 78 18 90 24 C98 28 92 52 76 56 C66 59 56 54 50 48Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M50 54 C44 58 28 60 20 68 C14 74 22 84 34 78 C42 74 48 64 50 54Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M50 54 C56 58 72 60 80 68 C86 74 78 84 66 78 C58 74 52 64 50 54Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+            <ellipse cx="50" cy="52" rx="3.5" ry="18" fill="#2d3748"/>
+            <line x1="50" y1="34" x2="38" y2="18" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="37" cy="17" r="2.5" fill="#2d3748"/>
+            <line x1="50" y1="34" x2="62" y2="18" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="63" cy="17" r="2.5" fill="#2d3748"/>
+        </svg>
+        <h2>Save Akraya to Your Home Screen</h2>
+        <p>
+            We're building a native iOS app, but in the meantime you can save Akraya to your home screen for a native-like experience.
+        </p>
+        <details class="modal-details">
+            <summary>How to save to home screen</summary>
+            <div class="modal-details-body">
+                <div>
+                    <strong>Step 1:</strong> Tap the share icon at the bottom of the screen
+                </div>
+                <div>
+                    <strong>Step 2:</strong> Scroll down and tap "Add to Home Screen"
+                </div>
+                <div>
+                    <strong>Step 3:</strong> Choose a name (or keep "Akraya") and tap "Add"
+                </div>
+                <div>
+                    <strong>That's it!</strong> Akraya will now appear as an app on your home screen.
+                </div>
+            </div>
+        </details>
+        <button class="modal-enter-btn" onclick="closeIOSModal()">Start chatting</button>
+    </div>
+</div>
+
+<!-- Welcome modal -->
+<div id="welcomeModal" class="modal-overlay">
+    <div class="modal-box">
+        <svg style="width:48px;height:48px;margin-bottom:12px;display:block" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M50 48 C44 38 22 18 10 24 C2 28 8 52 24 56 C34 59 44 54 50 48Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M50 48 C56 38 78 18 90 24 C98 28 92 52 76 56 C66 59 56 54 50 48Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M50 54 C44 58 28 60 20 68 C14 74 22 84 34 78 C42 74 48 64 50 54Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M50 54 C56 58 72 60 80 68 C86 74 78 84 66 78 C58 74 52 64 50 54Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M50 48 C44 42 32 28 22 30" fill="none" stroke="#2d3748" stroke-width="2" opacity="0.5"/>
+            <path d="M50 48 C40 46 26 44 18 50" fill="none" stroke="#2d3748" stroke-width="2" opacity="0.5"/>
+            <path d="M50 48 C56 42 68 28 78 30" fill="none" stroke="#2d3748" stroke-width="2" opacity="0.5"/>
+            <path d="M50 48 C60 46 74 44 82 50" fill="none" stroke="#2d3748" stroke-width="2" opacity="0.5"/>
+            <ellipse cx="50" cy="52" rx="3.5" ry="18" fill="#2d3748"/>
+            <line x1="50" y1="34" x2="38" y2="18" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="37" cy="17" r="2.5" fill="#2d3748"/>
+            <line x1="50" y1="34" x2="62" y2="18" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="63" cy="17" r="2.5" fill="#2d3748"/>
+        </svg>
+        <h2>Hey, I'm Akraya</h2>
+        <p>
+            A free AI companion for conversations, emotional support, and thinking things through —
+            no account needed. 
+        </p>
+        <details class="modal-details">
+            <summary>Privacy, safety &amp; legal</summary>
+            <div class="modal-details-body">
+                <div>
+                    <strong>Safety</strong><br>
+                    If you are in immediate danger, contact a trusted person or your local emergency services.
+                </div>
+                <div>
+                    This AI can make mistakes. Do not rely on it as a substitute for professional advice or emergency help. The service operator is responsible for providing accurate privacy and service information for this deployment.
+                </div>
+            </div>
+        </details>
+        <button class="modal-enter-btn" onclick="closeWelcome()">Start chatting</button>
+    </div>
+</div>
+
+
+<div id="app">
+            <!-- decorative collage, scoped to the chat box only (not full viewport) so mobile stays clean -->
+    <div class="chatbox-collage" aria-hidden="true">
+      <svg class="collage-art" viewBox="0 0 160 240" style="top:88.9%; left:23.9%; width:43px; opacity:0.3; transform: rotate(-3deg);">
+        <g stroke="#8a4fae" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 40 L96 40 L108 200 L52 200Z"/>
+    <path d="M58 76 L102 76 M56 120 L104 120 M54 160 L106 160" stroke-width="2.4"/>
+    <path d="M56 40 C56 20 104 20 104 40 L96 52 L64 52Z"/>
+    <path d="M64 52 L96 52" stroke-width="3"/>
+    <path d="M44 200 L116 200 L128 220 L32 220Z"/>
+    <path d="M70 24 L70 10 M90 24 L90 10 M80 20 L80 4" stroke-width="2.4"/>
+    <path d="M10 214 C24 208 36 220 50 214 C64 208 76 220 90 214 C104 208 116 220 130 214 C144 208 150 214 150 214" stroke-width="3.4"/>
+  </g>
+      </svg>
+      <svg class="collage-art" viewBox="0 0 200 200" style="top:86.2%; left:80.1%; width:43px; opacity:0.3; transform: rotate(-10deg);">
+        <g stroke="#8a4fae" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- zig-zag badge outline, double-lined for a hand-inked look -->
+    <path d="M100 14 L118 34 L142 22 L146 48 L172 50 L160 74 L182 88 L158 100 L176 120 L150 126 L154 152 L128 144 L118 168 L100 148 L82 168 L72 144 L46 152 L50 126 L24 120 L42 100 L18 88 L40 74 L28 50 L54 48 L58 22 L82 34Z"/>
+    <path d="M100 22 L112 36 L132 28" stroke-width="1.6"/>
+    <path d="M60 30 L64 46" stroke-width="1.6"/>
+    <!-- skull with brow ridge and shading -->
+    <path d="M76 92 C74 68 126 68 124 92 C126 104 120 112 120 122 L80 122 C80 112 74 104 76 92Z"/>
+    <path d="M80 76 C88 70 112 70 120 76" stroke-width="2.2"/>
+    <circle cx="88" cy="94" r="7" fill="#6b3a8a" fill-opacity="0.5"/>
+    <circle cx="112" cy="94" r="7" fill="#6b3a8a" fill-opacity="0.5"/>
+    <path d="M84 90 L92 98 M108 90 L116 98" stroke-width="1.6"/>
+    <path d="M100 100 L96 112 L104 112Z"/>
+    <path d="M84 124 L88 134 M96 124 L96 136 M108 124 L108 136 M116 124 L112 134" stroke-width="4"/>
+    <path d="M78 110 L76 116 M122 110 L124 116" stroke-width="2"/>
+    <!-- crossbones with joint detail -->
+    <path d="M52 148 L148 108 M52 108 L148 148" stroke-width="6"/>
+    <path d="M64 138 L58 140 M138 118 L144 116" stroke-width="1.8"/>
+    <circle cx="52" cy="148" r="5"/><circle cx="148" cy="108" r="5"/>
+    <circle cx="52" cy="108" r="5"/><circle cx="148" cy="148" r="5"/>
+    <!-- ink spatter accents -->
+    <circle cx="36" cy="60" r="1.6" fill="#8a4fae"/>
+    <circle cx="168" cy="164" r="1.4" fill="#8a4fae"/>
+    <circle cx="30" cy="142" r="1.2" fill="#8a4fae"/>
+  </g>
+      </svg>
+      <svg class="collage-art" viewBox="0 0 200 170" style="top:71.4%; left:39.5%; width:63px; opacity:0.3; transform: rotate(1deg);">
+        <g stroke="#8a4fae" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 40 L180 40 L176 140 C176 148 24 148 24 140Z"/>
+    <path d="M20 40 C20 32 30 26 42 26 L78 26 C82 20 118 20 122 26 L158 26 C170 26 180 32 180 40"/>
+    <circle cx="100" cy="92" r="34"/>
+    <circle cx="100" cy="92" r="24" stroke-width="3.4"/>
+    <circle cx="112" cy="80" r="5" stroke-width="2.6"/>
+    <circle cx="152" cy="54" r="6" fill="#6b3a8a" fill-opacity="0.5"/>
+    <path d="M40 56 L64 56" stroke-width="3.4"/>
+    <path d="M34 128 L64 128" stroke-width="3"/>
+  </g>
+      </svg>
+      <svg class="collage-art" viewBox="0 0 220 160" style="top:55.9%; left:62.1%; width:34px; opacity:0.3; transform: rotate(-1deg);">
+        <g stroke="#8a4fae" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 30 C50 20 90 20 108 30 L108 130 C90 120 50 120 20 130Z"/>
+    <path d="M196 30 C166 20 126 20 108 30 L108 130 C126 120 166 120 196 130Z"/>
+    <path d="M34 46 L92 40 M34 62 L92 56 M34 78 L84 72 M34 94 L92 88" stroke-width="2.4"/>
+    <path d="M124 40 L182 46 M124 56 L182 62 M132 72 L182 78 M124 88 L182 94" stroke-width="2.4"/>
+    <path d="M150 6 L206 62" stroke-width="5.6"/>
+    <path d="M206 62 L216 72 L204 76 Z" fill="#6b3a8a" fill-opacity="0.4"/>
+    <path d="M146 10 L156 2" stroke-width="4"/>
+  </g>
+      </svg>
+      <svg class="collage-art" viewBox="0 0 220 140" style="top:13.9%; left:46.3%; width:44px; opacity:0.3; transform: rotate(-1deg);">
+        <g stroke="#8a4fae" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 30 L200 30 L200 90 L120 90 L110 112 L100 90 L20 90Z"/>
+    <path d="M30 40 L190 40 L190 80 L30 80Z" stroke-width="2.6" stroke-dasharray="2 7"/>
+    <path d="M42 62 C42 50 56 50 56 62 C56 74 42 74 42 62Z"/>
+    <path d="M70 52 L70 72 M70 52 L84 52 C90 52 90 62 84 62 L70 62" stroke-width="3.4"/>
+    <path d="M98 52 L98 72 M98 52 L112 72 M112 52 L112 72" stroke-width="3.4"/>
+    <path d="M126 52 C126 48 140 48 140 52 L140 62 C140 66 126 66 126 62 L126 72 C126 76 140 76 140 72" stroke-width="3.4"/>
+    <circle cx="20" cy="30" r="4" fill="#8a4fae"/>
+    <circle cx="200" cy="30" r="4" fill="#8a4fae"/>
+    <circle cx="20" cy="90" r="4" fill="#8a4fae"/>
+    <circle cx="200" cy="90" r="4" fill="#8a4fae"/>
+  </g>
+      </svg>
+      <svg class="collage-art" viewBox="0 0 100 220" style="top:31.2%; left:53.3%; width:65px; opacity:0.3; transform: rotate(-4deg);">
+        <g stroke="#8a4fae" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50 10 C70 40 78 90 62 140 C56 160 48 178 40 198"/>
+    <path d="M50 10 C34 38 28 84 40 128" fill="#6b3a8a" fill-opacity="0.2"/>
+    <path d="M50 30 L34 40 M52 46 L34 58 M54 62 L36 76 M55 78 L38 94 M56 94 L40 110 M55 110 L42 126 M53 126 L42 140" stroke-width="1.8"/>
+    <path d="M50 30 L64 42 M52 46 L66 60 M54 62 L68 78 M55 78 L68 96 M56 94 L68 112" stroke-width="1.8"/>
+    <path d="M40 198 L34 210 M40 198 L46 212" stroke-width="2.2"/>
+  </g>
+      </svg>
+      <svg class="collage-art" viewBox="0 0 160 220" style="top:5.2%; left:6.7%; width:60px; opacity:0.3; transform: rotate(12deg);">
+        <g stroke="#8a4fae" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50 50 L44 60 L44 180 C44 196 116 196 116 180 L116 60 L110 50Z"/>
+    <path d="M46 50 L114 50 L114 34 L46 34Z"/>
+    <path d="M40 34 L120 34" stroke-width="6"/>
+    <path d="M50 70 L110 70 M46 100 L114 100 M46 130 L114 130 M50 160 L110 160" stroke-width="1.6" stroke-dasharray="1 6"/>
+    <circle cx="72" cy="90" r="4" fill="#8a4fae"/>
+    <circle cx="96" cy="120" r="3.4" fill="#8a4fae"/>
+    <circle cx="66" cy="140" r="3.4" fill="#8a4fae"/>
+    <circle cx="90" cy="80" r="2.6" fill="#8a4fae"/>
+    <path d="M72 90 L78 84 M96 120 L100 114 M66 140 L60 136" stroke-width="1.4"/>
+  </g>
+      </svg>
+      <svg class="collage-art" viewBox="0 0 220 160" style="top:47.6%; left:29.4%; width:40px; opacity:0.3; transform: rotate(11deg);">
+        <g stroke="#8a4fae" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M40 70 C20 70 14 96 34 100 C24 118 44 132 66 126 C74 140 106 140 116 126 C144 132 168 116 158 96 C176 92 174 66 152 64 C150 42 108 34 92 52 C68 40 44 50 40 70Z" fill="#6b3a8a" fill-opacity="0.18"/>
+    <path d="M50 78 C60 72 78 72 86 80" stroke-width="2.4"/>
+    <path d="M120 118 L104 148 L118 148 L98 178" stroke-width="4.6"/>
+    <path d="M20 140 L14 152 M40 148 L34 160 M60 142 L56 156" stroke-width="2.6"/>
+  </g>
+      </svg>
+    </div>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="header-logo">
+            <svg class="header-logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <g class="hlw">
+                    <!-- Upper left wing -->
+                    <path d="M50 48 C44 38 22 18 10 24 C2 28 8 52 24 56 C34 59 44 54 50 48Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+                    <!-- Lower left wing -->
+                    <path d="M50 54 C44 58 28 60 20 68 C14 74 22 84 34 78 C42 74 48 64 50 54Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+                    <!-- Wing segments left upper -->
+                    <path d="M50 48 C44 42 32 28 22 30" fill="none" stroke="#2d3748" stroke-width="2" opacity="0.5"/>
+                    <path d="M50 48 C40 46 26 44 18 50" fill="none" stroke="#2d3748" stroke-width="2" opacity="0.5"/>
+                </g>
+                <g class="hrw">
+                    <!-- Upper right wing -->
+                    <path d="M50 48 C56 38 78 18 90 24 C98 28 92 52 76 56 C66 59 56 54 50 48Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+                    <!-- Lower right wing -->
+                    <path d="M50 54 C56 58 72 60 80 68 C86 74 78 84 66 78 C58 74 52 64 50 54Z" fill="#87d0ef" stroke="#2d3748" stroke-width="3.5" stroke-linejoin="round"/>
+                    <!-- Wing segments right upper -->
+                    <path d="M50 48 C56 42 68 28 78 30" fill="none" stroke="#2d3748" stroke-width="2" opacity="0.5"/>
+                    <path d="M50 48 C60 46 74 44 82 50" fill="none" stroke="#2d3748" stroke-width="2" opacity="0.5"/>
+                </g>
+                <!-- Body -->
+                <ellipse cx="50" cy="52" rx="3.5" ry="18" fill="#2d3748"/>
+                <!-- Antennae -->
+                <line x1="50" y1="34" x2="38" y2="18" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="37" cy="17" r="2.5" fill="#2d3748"/>
+                <line x1="50" y1="34" x2="62" y2="18" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="63" cy="17" r="2.5" fill="#2d3748"/>
+            </svg>
+            <div>
+                <h1 class="header-name">Akraya</h1>
+                <div class="header-sub">AI companion · private &amp; anonymous</div>
+            </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+            <audio id="ambient-audio" src="audio/ambient.mp3" loop preload="none"></audio>
+            <button id="music-toggle" aria-label="Toggle ambient music" title="Ambient music">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M9 18V6l10-2v12" stroke-width="1.6" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="6.5" cy="18" r="2.5" fill="currentColor"/>
+                    <circle cx="16.5" cy="16" r="2.5" fill="currentColor"/>
+                </svg>
+            </button>
+            <button id="reset-btn" onclick="handleReset()">New chat</button>
+        </div>
+    </div>
+
+    <!-- Chat messages -->
+    <div id="response">
+        <div class="ai-message">
+            Hey — I'm Akraya. You can share anything with me: how you're feeling, what's been on your mind, or just something that happened today. What's up?
+        </div>
+    </div>
+
+<!-- Input -->
+    <div id="input-area">
+        <div id="input-row">
+            <textarea id="input" aria-label="Message Akraya" placeholder="Message Akraya…" rows="1" required></textarea>
+            <button id="send-btn" type="button" aria-label="Send message">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="input-hint">Akraya can make mistakes. Verify important information independently.</div>
+    </div>
+</div>
+
+<script>
+    // ─── DEPLOY CONFIG ────────────────────────────────────────────────
+    // Set this to YOUR worker URL after deploying the backend, e.g.
+    // const API_BASE_URL = 'https://chat-api.<your-subdomain>.workers.dev';
+    const API_BASE_URL = window.CHAT_API_BASE || 'https://chat-api.<your-subdomain>.workers.dev';
+    // ───────────────────────────────────────────────────────────────────
+    const apiUrl = `${API_BASE_URL}/simplechat`;
+
+    let uuid = generateUUID();
+
+    const responseDiv  = document.getElementById('response');
+    const inputField   = document.getElementById('input');
+    const sendBtn      = document.getElementById('send-btn');
+
+    // ── Zoom prevention (iOS only, via JS — keeps viewport meta accessible) ───
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        document.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 1) e.preventDefault();
+        }, { passive: false });
+        let lastTap = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = Date.now();
+            if (now - lastTap < 300) e.preventDefault();
+            lastTap = now;
+        }, { passive: false });
+    }
+
+    // ── iOS Detection & PWA Setup ─────────────────────────────────────────────
+    function isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
+
+    function isStandaloneMode() {
+        return window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+    }
+
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(err => console.log('SW registration failed:', err));
+    }
+
+    // ── Welcome modal ──────────────────────────────────────────────────────────
+    function closeWelcome() {
+        document.getElementById('welcomeModal').classList.remove('open');
+    }
+
+    function closeIOSModal() {
+        document.getElementById('iosModal').classList.remove('open');
+        // go straight to chat — do NOT open welcome modal after
+    }
+
+    // Show appropriate modal on load:
+    // iOS (not installed) + 15% chance → show home screen prompt
+    // Everything else → show welcome modal
+    const showIOSPrompt = isIOS() && !isStandaloneMode() && Math.random() < 0.15;
+    if (showIOSPrompt) {
+        document.getElementById('iosModal').classList.add('open');
+    } else {
+        document.getElementById('welcomeModal').classList.add('open');
+    }
+
+    function handleReset() {
+        window.location.reload();
+    }
+
+    // ── UUID ───────────────────────────────────────────────────────────────────
+    function generateUUID() {
+        const chars = 'abcdef0123456789';
+        let id = '';
+        for (let i = 0; i < 32; i++) {
+            id += chars[Math.floor(Math.random() * chars.length)];
+            if (i === 7 || i === 11 || i === 15 || i === 19) id += '-';
+        }
+        return id;
+    }
+
+    // ── Auto-grow textarea ─────────────────────────────────────────────────────
+    inputField.addEventListener('input', () => {
+        inputField.style.height = 'auto';
+        inputField.style.height = Math.min(inputField.scrollHeight, 120) + 'px';
+    });
+
+    // ── Send on Enter (Shift+Enter = newline) ──────────────────────────────────
+    inputField.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    sendBtn.addEventListener('click', sendMessage);
+
+    // ── Main send function ─────────────────────────────────────────────────────
+    function sendMessage() {
+        const message = inputField.value.trim();
+        if (!message) return;
+
+        // User bubble
+        const userDiv = document.createElement('div');
+        userDiv.className = 'user-message';
+        userDiv.textContent = message;
+        responseDiv.appendChild(userDiv);
+
+        inputField.value = '';
+        inputField.style.height = 'auto';
+        inputField.disabled = true;
+        sendBtn.disabled = true;
+        scrollToBottom();
+
+        // Typing indicator
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'typing-indicator';
+        typingDiv.innerHTML = `
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        `;
+        responseDiv.appendChild(typingDiv);
+        scrollToBottom();
+
+        fetch(`${apiUrl}?userId=${encodeURIComponent(uuid)}&message=${encodeURIComponent(message)}`)
+            .then(async (response) => {
+                typingDiv.remove();
+
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                const aiDiv = document.createElement('div');
+                aiDiv.className = 'ai-message';
+                responseDiv.appendChild(aiDiv);
+                scrollToBottom();
+
+                await readStream(response, aiDiv);
+            })
+            .catch((err) => {
+                typingDiv.remove();
+                console.error(err);
+                const errDiv = document.createElement('div');
+                errDiv.className = 'ai-message';
+                errDiv.style.color = 'var(--text-muted)';
+                errDiv.textContent = 'Something went wrong. Please try again.';
+                responseDiv.appendChild(errDiv);
+            })
+            .finally(() => {
+                inputField.disabled = false;
+                sendBtn.disabled = false;
+                inputField.focus();
+                scrollToBottom();
+            });
+    }
+
+    // ── Stream reader ──────────────────────────────────────────────────────────
+    async function readStream(response, messageDiv) {
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let text = '';
+
+        // Dedicated div for response text so innerText updates don't wipe siblings
+        const responseTextDiv = document.createElement('div');
+        responseTextDiv.className = 'r1-response-text';
+        messageDiv.appendChild(responseTextDiv);
+
+        // Reasoning (R1) state
+        let reasoningDiv  = null;
+        let reasoningText = '';
+
+        while (true) {
+            const { value, done } = await reader.read();
+            buffer += decoder.decode(value || new Uint8Array(), { stream: !done });
+
+            const lines = buffer.split('\n');
+            buffer = done ? '' : (lines.pop() || '');
+
+            for (const line of lines) {
+                const payload = line.startsWith('data:')
+                    ? line.slice(5).trim()
+                    : line.trim();
+
+                if (!payload || payload === '[DONE]') continue;
+
+                try {
+                    const item = JSON.parse(payload);
+
+                    // ── Emergency modal ───────────────────────────────────────
+                    if (item.type === 'emergency_info') {
+                        showEmergencyModal(item);
+                        continue;
+                    }
+
+                    // ── Ignore debug / classifier data ────────────────────────
+                    if (item.type === 'debug') continue;
+
+                    // ── R1 reasoning chunk ────────────────────────────────────
+                    if (item.type === 'reasoning' && item.chunk) {
+                        if (!reasoningDiv) {
+                            reasoningDiv = document.createElement('div');
+                            reasoningDiv.className = 'r1-reasoning';
+                            reasoningDiv.innerHTML = `<span class="r1-label">thinking</span><span class="r1-text"></span>`;
+                            messageDiv.insertBefore(reasoningDiv, responseTextDiv);
+                        }
+                        reasoningText += item.chunk;
+                        reasoningDiv.querySelector('.r1-text').textContent = reasoningText;
+                        scrollToBottom();
+                        continue;
+                    }
+
+                    // ── R1 done ───────────────────────────────────────────────
+                    if (item.type === 'reasoning_done') {
+                        if (reasoningDiv) reasoningDiv.classList.add('r1-done');
+                        continue;
+                    }
+
+                    // ── Main response chunk ───────────────────────────────────
+                    const chunk = item.response || item.text || '';
+                    if (chunk) {
+                        text += chunk;
+                        responseTextDiv.textContent = text;
+                        scrollToBottom();
+                    }
+                } catch {
+                    // Non-JSON SSE lines — ignore
+                }
+            }
+
+            if (done) break;
+        }
+
+        // Minimal disclaimer
+        const meta = document.createElement('div');
+        meta.className = 'response-meta';
+        meta.textContent = 'Akraya can make mistakes. Verify important information independently.';
+        messageDiv.appendChild(meta);
+    }
+
+    // ── Emergency modal ────────────────────────────────────────────────────────
+    function showEmergencyModal(item) {
+        const overlay = document.createElement('div');
+        overlay.className = 'emergency-overlay';
+
+        let numbersHtml = `
+            <div class="emergency-num">
+                <span class="enum-label">Emergency services</span>
+                <span class="enum-value">${item.general}</span>
+            </div>`;
+
+        if (item.crisis) {
+            numbersHtml += `
+                <div class="emergency-num crisis-line">
+                    <span class="enum-label">${item.crisisName || 'Crisis line'}</span>
+                    <span class="enum-value">${item.crisis}</span>
+                </div>`;
+        }
+
+        overlay.innerHTML = `
+            <div class="emergency-modal">
+                <div class="emergency-header">
+                    <span class="emergency-icon">🆘</span>
+                    <span class="emergency-title">If you or someone you know needs help right now</span>
+                </div>
+                <div class="emergency-body">
+                    <p class="emergency-note">
+                        Based on your region (<strong>${item.country}</strong>), here are numbers that can help.
+                    </p>
+                    <p class="emergency-privacy">
+                        Akraya detected your approximate region from your connection — not your address.
+                        No messages, no location, and nothing you've said has been shared with anyone.
+                    </p>
+                    <div class="emergency-numbers">${numbersHtml}</div>
+                    <p class="emergency-reassure">
+                        You don't have to be in immediate danger to call. These lines are free, confidential, and available 24/7.
+                    </p>
+                    <button class="emergency-close-btn" id="emergCloseBtn" disabled>
+                        I've seen this — back to chat (<span id="emergCountdown">10</span>)
+                    </button>
+                </div>
+            </div>`;
+
+        document.body.appendChild(overlay);
+
+        let secondsLeft = 10;
+        const btn            = overlay.querySelector('#emergCloseBtn');
+        const countdownSpan  = overlay.querySelector('#emergCountdown');
+
+        const tick = setInterval(() => {
+            secondsLeft--;
+            if (secondsLeft <= 0) {
+                clearInterval(tick);
+                btn.disabled = false;
+                btn.textContent = "I've seen this — back to chat";
+                btn.onclick = () => overlay.remove();
+            } else {
+                countdownSpan.textContent = secondsLeft;
+            }
+        }, 1000);
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay && !btn.disabled) overlay.remove();
+        });
+    }
+
+    // ── Scroll helper ──────────────────────────────────────────────────────────
+    function scrollToBottom() {
+        responseDiv.scrollTop = responseDiv.scrollHeight;
+    }
+
+    window.addEventListener('load', scrollToBottom);
+
+    // ── Ambient background music (looped, real licensed track) ─────────────────
+    (function () {
+        var audio = document.getElementById('ambient-audio');
+        var btn = document.getElementById('music-toggle');
+        if (!audio) return;
+
+        audio.volume = 0.35;
+
+        function markPlaying(isPlaying) {
+            if (!btn) return;
+            btn.classList.toggle('is-playing', isPlaying);
+            btn.classList.toggle('is-muted', !isPlaying);
+        }
+
+        function tryPlay() {
+            var p = audio.play();
+            if (p && p.then) {
+                p.then(function () { markPlaying(true); }).catch(function () {
+                    // autoplay blocked — wait for first user interaction
+                    var kick = function () {
+                        document.removeEventListener('pointerdown', kick);
+                        document.removeEventListener('keydown', kick);
+                        audio.play().then(function () { markPlaying(true); }).catch(function () {});
+                    };
+                    document.addEventListener('pointerdown', kick, { once: true });
+                    document.addEventListener('keydown', kick, { once: true });
+                });
+            }
+        }
+
+        window.addEventListener('load', tryPlay);
+
+        if (btn) {
+            btn.addEventListener('click', function () {
+                if (audio.paused) {
+                    audio.play().then(function () { markPlaying(true); }).catch(function () {});
+                } else {
+                    audio.pause();
+                    markPlaying(false);
+                }
+            });
+        }
+    })();
+
+    // ── Randomize collage artwork positions on load ─────────────────────────────
+    (function () {
+        var pieces = document.querySelectorAll('.chatbox-collage .collage-art');
+        if (!pieces.length) return;
+
+        function rand(min, max) { return min + Math.random() * (max - min); }
+
+        var bandHeight = 100 / pieces.length;
+
+        pieces.forEach(function (el, i) {
+            var bandLo = i * bandHeight;
+            var bandHi = (i + 1) * bandHeight;
+            var top = rand(bandLo + 1, bandHi - 1);
+            var left = rand(2, 84);
+            var rot = rand(-16, 16);
+            el.style.top = top.toFixed(1) + '%';
+            el.style.left = left.toFixed(1) + '%';
+            el.style.transform = 'rotate(' + rot.toFixed(1) + 'deg)';
+        });
+    })();
+
+</script>
+
+<!-- Butterfly 1 -->
+<svg id="bf1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:fixed;width:28px;height:28px;pointer-events:none;z-index:50;opacity:0;will-change:transform,opacity;transition:opacity 1.4s ease">
+    <path class="bfw-l" d="M50 48 C44 38 22 18 10 24 C2 28 8 52 24 56 C34 59 44 54 50 48Z" fill="#87d0ef" stroke="#2d3748" stroke-width="4" stroke-linejoin="round"/>
+    <path class="bfw-r" d="M50 48 C56 38 78 18 90 24 C98 28 92 52 76 56 C66 59 56 54 50 48Z" fill="#87d0ef" stroke="#2d3748" stroke-width="4" stroke-linejoin="round"/>
+    <path class="bfw-l" d="M50 54 C44 58 28 60 20 68 C14 74 22 84 34 78 C42 74 48 64 50 54Z" fill="#87d0ef" stroke="#2d3748" stroke-width="4" stroke-linejoin="round"/>
+    <path class="bfw-r" d="M50 54 C56 58 72 60 80 68 C86 74 78 84 66 78 C58 74 52 64 50 54Z" fill="#87d0ef" stroke="#2d3748" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="50" cy="52" rx="3.5" ry="18" fill="#2d3748"/>
+    <line x1="50" y1="34" x2="38" y2="18" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="37" cy="17" r="2.5" fill="#2d3748"/>
+    <line x1="50" y1="34" x2="62" y2="18" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="63" cy="17" r="2.5" fill="#2d3748"/>
+</svg>
+<!-- Butterfly 2 (slightly smaller, companion) -->
+<svg id="bf2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:fixed;width:22px;height:22px;pointer-events:none;z-index:50;opacity:0;will-change:transform,opacity;transition:opacity 1.4s ease">
+    <path class="bfw-l" d="M50 48 C44 38 22 18 10 24 C2 28 8 52 24 56 C34 59 44 54 50 48Z" fill="#87d0ef" stroke="#2d3748" stroke-width="4" stroke-linejoin="round"/>
+    <path class="bfw-r" d="M50 48 C56 38 78 18 90 24 C98 28 92 52 76 56 C66 59 56 54 50 48Z" fill="#87d0ef" stroke="#2d3748" stroke-width="4" stroke-linejoin="round"/>
+    <path class="bfw-l" d="M50 54 C44 58 28 60 20 68 C14 74 22 84 34 78 C42 74 48 64 50 54Z" fill="#87d0ef" stroke="#2d3748" stroke-width="4" stroke-linejoin="round"/>
+    <path class="bfw-r" d="M50 54 C56 58 72 60 80 68 C86 74 78 84 66 78 C58 74 52 64 50 54Z" fill="#87d0ef" stroke="#2d3748" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="50" cy="52" rx="3.5" ry="18" fill="#2d3748"/>
+    <line x1="50" y1="34" x2="38" y2="18" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="37" cy="17" r="2.5" fill="#2d3748"/>
+    <line x1="50" y1="34" x2="62" y2="18" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="63" cy="17" r="2.5" fill="#2d3748"/>
+</svg>
+
+<script>
+(function () {
+    var W = window.innerWidth, H = window.innerHeight;
+    window.addEventListener('resize', function () { W = window.innerWidth; H = window.innerHeight; });
+
+    // Shared flock target that both butterflies aim for
+    var flockTX = W * 0.5, flockTY = H * 0.4;
+    var flockTimer = 0;
+
+    function pickFlockTarget() {
+        flockTX = 55 + Math.random() * (W - 110);
+        flockTY = 100 + Math.random() * (H - 220);
+        flockTimer = Date.now() + 2800 + Math.random() * 4500;
+    }
+    pickFlockTarget();
+
+    // Factory: create a butterfly controller
+    function makeBF(el, initX, initY, offsetX, offsetY, flapDelay) {
+        var wings = el.querySelectorAll('.bfw-l, .bfw-r');
+        wings.forEach(function (w) { w.style.animationDelay = flapDelay + 's'; });
+
+        var x = initX, y = initY;
+        var vx = 0.6, vy = 0.3;
+        var sitting = false, sitUntil = 0;
+        var sitX = 0, sitY = 0;
+
+        function setFlap(s) {
+            wings.forEach(function (w) { w.style.animationDuration = s + 's'; });
+        }
+
+        // Called externally to land on a specific message
+        function landOn(r) {
+            if (sitting) return;
+            sitting  = true;
+            sitX     = r.left + 18 + Math.random() * (r.width - 36);
+            sitY     = r.top + 5;
+            sitUntil = Date.now() + 2000; // exactly 2 seconds
+            setFlap(1.8);
+            // Update position to sit location so takeoff continues from there
+            x = sitX; y = sitY;
+            vx = 0; vy = 0;
+        }
+
+        function tick(now) {
+            if (sitting) {
+                // Bob gently on the message
+                var bob = Math.sin(now * 0.0025) * 1.4;
+                el.style.left = (sitX - 14) + 'px';
+                el.style.top  = (sitY + bob - 14) + 'px';
+                if (Date.now() > sitUntil) {
+                    sitting = false;
+                    setFlap(0.3);
+                    // x,y already set to sit position — continues naturally from here
+                }
+            } else {
+                // Target = shared flock position + personal offset (drifts over time)
+                var tx = flockTX + offsetX + Math.sin(now * 0.0004) * 28;
+                var ty = flockTY + offsetY + Math.cos(now * 0.0003) * 20;
+
+                var dx = tx - x, dy = ty - y;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                var spd  = 1.55;
+
+                if (dist > 0) {
+                    vx += ((dx / dist) * spd - vx) * 0.045;
+                    vy += ((dy / dist) * spd - vy) * 0.045;
+                }
+                // Turbulence — never fly straight
+                vx += (Math.random() - 0.5) * 0.42;
+                vy += (Math.random() - 0.5) * 0.32;
+
+                var mag = Math.sqrt(vx * vx + vy * vy);
+                if (mag > spd) { vx = vx / mag * spd; vy = vy / mag * spd; }
+
+                x += vx * 0.95;
+                y += vy * 0.95;
+
+                if (x < 28)     { x = 28;     vx =  Math.abs(vx); }
+                if (x > W - 28) { x = W - 28; vx = -Math.abs(vx); }
+                if (y < 90)     { y = 90;      vy =  Math.abs(vy); }
+                if (y > H - 80) { y = H - 80;  vy = -Math.abs(vy); }
+
+                el.style.transform = vx < 0 ? 'scaleX(-1)' : 'scaleX(1)';
+                el.style.left = (x - 14) + 'px';
+                el.style.top  = (y - 14) + 'px';
+            }
+        }
+
+        return { tick: tick, landOn: landOn, isSitting: function () { return sitting; } };
+    }
+
+    var b1 = makeBF(document.getElementById('bf1'), W * 0.38, H * 0.35,  18, -12, 0);
+    var b2 = makeBF(document.getElementById('bf2'), W * 0.42, H * 0.38, -22,  16, 0.14);
+
+    // Master tick — update flock target then both butterflies
+    var prev = performance.now();
+    function masterTick(now) {
+        var dt = Math.min(now - prev, 40); prev = now;
+        if (Date.now() > flockTimer) pickFlockTarget();
+        b1.tick(now);
+        b2.tick(now);
+        requestAnimationFrame(masterTick);
+    }
+
+    setTimeout(function () {
+        document.getElementById('bf1').style.opacity = '0.65';
+        document.getElementById('bf2').style.opacity = '0.55';
+        requestAnimationFrame(masterTick);
+    }, 1800);
+
+    // ── User message observer: 50% chance one butterfly sits on it ──
+    var responseEl = document.getElementById('response');
+    if (responseEl && window.MutationObserver) {
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mut) {
+                mut.addedNodes.forEach(function (node) {
+                    if (node.nodeType !== 1) return;
+                    if (!node.classList.contains('user-message')) return;
+                    if (Math.random() >= 0.3) return; // 30% chance
+
+                    // Small delay so the message renders and has a real rect
+                    setTimeout(function () {
+                        var r = node.getBoundingClientRect();
+                        if (r.width < 10) return; // not visible yet
+                        // Pick whichever butterfly isn't already sitting
+                        var candidates = [];
+                        if (!b1.isSitting()) candidates.push(b1);
+                        if (!b2.isSitting()) candidates.push(b2);
+                        if (!candidates.length) candidates = [b1]; // fallback
+                        var chosen = candidates[Math.floor(Math.random() * candidates.length)];
+                        chosen.landOn(r);
+                    }, 350);
+                });
+            });
+        });
+        observer.observe(responseEl, { childList: true });
+    }
+})();
+</script>
+ </body>
+</html>

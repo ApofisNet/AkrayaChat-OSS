@@ -1,0 +1,33 @@
+{
+  "name": "Akraya - Free AI Companion",
+  "short_name": "Akraya",
+  "description": "A free, anonymous AI companion for emotional support and mental health conversations.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#E8DCC8",
+  "background_color": "#E8DCC8",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect fill='%23E8DCC8' width='192' height='192'/%3E%3Cg transform='translate(48 48)'%3E%3Cpath d='M50 48 C44 38 22 18 10 24 C2 28 8 52 24 56 C34 59 44 54 50 48Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M50 48 C56 38 78 18 90 24 C98 28 92 52 76 56 C66 59 56 54 50 48Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M50 54 C44 58 28 60 20 68 C14 74 22 84 34 78 C42 74 48 64 50 54Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M50 54 C56 58 72 60 80 68 C86 74 78 84 66 78 C58 74 52 64 50 54Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cellipse cx='50' cy='52' rx='3.5' ry='18' fill='%232d3748'/%3E%3Cline x1='50' y1='34' x2='38' y2='18' stroke='%232d3748' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='37' cy='17' r='2.5' fill='%232d3748'/%3E%3Cline x1='50' y1='34' x2='62' y2='18' stroke='%232d3748' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='63' cy='17' r='2.5' fill='%232d3748'/%3E%3C/g%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect fill='%23E8DCC8' width='512' height='512'/%3E%3Cg transform='translate(128 128)'%3E%3Cpath d='M50 48 C44 38 22 18 10 24 C2 28 8 52 24 56 C34 59 44 54 50 48Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M50 48 C56 38 78 18 90 24 C98 28 92 52 76 56 C66 59 56 54 50 48Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M50 54 C44 58 28 60 20 68 C14 74 22 84 34 78 C42 74 48 64 50 54Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M50 54 C56 58 72 60 80 68 C86 74 78 84 66 78 C58 74 52 64 50 54Z' fill='%2387d0ef' stroke='%232d3748' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cellipse cx='50' cy='52' rx='3.5' ry='18' fill='%232d3748'/%3E%3Cline x1='50' y1='34' x2='38' y2='18' stroke='%232d3748' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='37' cy='17' r='2.5' fill='%232d3748'/%3E%3Cline x1='50' y1='34' x2='62' y2='18' stroke='%232d3748' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='63' cy='17' r='2.5' fill='%232d3748'/%3E%3C/g%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'%3E%3Crect fill='%23E8DCC8' width='540' height='720'/%3E%3Ctext x='50' y='100' font-size='32' font-weight='bold' fill='%23333'%3EAkraya%3C/text%3E%3Ctext x='50' y='150' font-size='16' fill='%23666'%3EFree AI Companion%3C/text%3E%3C/svg%3E",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ]
+}
