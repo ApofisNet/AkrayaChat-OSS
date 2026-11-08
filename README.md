@@ -15,7 +15,6 @@
 
 This repository contains Akraya Chat's static web interface and Cloudflare Worker. It is shared by **Apofis Group** for people who want to deploy and adapt the software on infrastructure they control.
 
-The design takes its visual cues from Akraya's original About page: a warm parchment background, soft blue butterfly mark, and calm typography. The source app and About page are preserved as supplied.
 
 ## What it includes
 
